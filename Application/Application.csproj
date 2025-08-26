@@ -12,7 +12,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="BusinessLogic\Commands\" />
     <Folder Include="BusinessLogic\Queries\FileManager\" />
   </ItemGroup>
 

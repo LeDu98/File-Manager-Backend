@@ -21,17 +21,17 @@ namespace Application.BusinessLogic.Queries.Folder
         private readonly ApplicationDbContext _dbContext;
         public GetFolderChildrenHandler(ApplicationDbContext dbContext) => _dbContext = dbContext;
 
-        public async Task<FolderChildrenDto> Handle(GetFolderChildrenQuery req, CancellationToken ct)
+        public async Task<FolderChildrenDto> Handle(GetFolderChildrenQuery request, CancellationToken cancellationToken)
         {
-            if (req.FolderId.HasValue)
+            if (request.FolderId.HasValue)
             {
                 var exists = await _dbContext.Folders.AsNoTracking()
-                    .AnyAsync(f => f.Id == req.FolderId.Value, ct);
+                    .AnyAsync(f => f.Id == request.FolderId.Value, cancellationToken);
                 if (!exists) throw new KeyNotFoundException();
             }
 
             var folders = await _dbContext.Folders.AsNoTracking()
-                .Where(_ => _.ParentId == req.FolderId)
+                .Where(_ => _.ParentId == request.FolderId)
                 .Select(_ => new FolderDto
                 {
                     Id = _.Id,
@@ -43,7 +43,7 @@ namespace Application.BusinessLogic.Queries.Folder
                 .ToListAsync();
 
             var files = await _dbContext.Files.AsNoTracking()
-                .Where(_ => _.FolderId == req.FolderId)
+                .Where(_ => _.FolderId == request.FolderId)
                 .Select(_ => new FileDto
                 {
                     Id = _.Id,
@@ -58,7 +58,7 @@ namespace Application.BusinessLogic.Queries.Folder
 
             return new FolderChildrenDto
             {
-                FolderId = req.FolderId,
+                FolderId = request.FolderId,
                 Folders = folders,
                 Files = files
             };
