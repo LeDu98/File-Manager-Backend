@@ -7,6 +7,7 @@ using Application;
 using System.Reflection.Metadata;
 using Application.BusinessLogic.Queries.Folder;
 using Application.BusinessLogic.Commands;
+using Application.BusinessLogic.Commands.Folder;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -29,6 +30,7 @@ builder.Services.AddMediatR(Application.AssemblyReference.Assembly);
 builder.Services.AddMediatR(typeof(GetFolderChildrenHandler).Assembly);
 builder.Services.AddMediatR(typeof(GetFolderBreadcrumbQuery).Assembly);
 builder.Services.AddMediatR(typeof(DeleteItemsCommand).Assembly);
+builder.Services.AddMediatR(typeof(CreateFolderCommand).Assembly);
 
 // Add services to the container.
 
