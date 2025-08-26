@@ -1,17 +1,14 @@
-﻿using Common.Enums;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Entities
+namespace Application.Dtos.File
 {
-    public class File
+    public class FileDto
     {
         public Guid Id { get; set; }
-        public eEntityStatus EntityStatus { get; set; }
         public Guid? FolderId { get; set; }
         public string Name { get; set; }
         public string ContentType { get; set; }
@@ -19,7 +16,5 @@ namespace Domain.Entities
         public byte[] Data { get; set; }
         public DateTimeOffset CreatedOn { get; set; }
         public DateTimeOffset ModifiedOn { get; set; }
-
-        public Folder Folder { get; set; }
     }
 }
