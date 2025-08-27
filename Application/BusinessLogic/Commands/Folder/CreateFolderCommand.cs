@@ -1,11 +1,6 @@
 ﻿using Infrastructure.Data;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Application.BusinessLogic.Commands.Folder
 {
@@ -58,8 +53,8 @@ namespace Application.BusinessLogic.Commands.Folder
                 Id = Guid.NewGuid(),
                 Name = finalName,
                 ParentId = request.ParentId,
-                CreatedOn = DateTime.UtcNow,
-                ModifiedOn = DateTime.UtcNow,
+                CreatedOn = DateTimeOffset.UtcNow,
+                ModifiedOn = DateTimeOffset.UtcNow,
                 EntityStatus = Common.Enums.eEntityStatus.Active,
             };
 

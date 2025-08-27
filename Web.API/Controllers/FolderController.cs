@@ -30,5 +30,19 @@ namespace Web.API.Controllers
                 return NotFound();
             }
         }
+
+        [HttpPost("rename")]
+        public async Task<IActionResult> Rename(RenameItemRequest request, CancellationToken cancellationToken)
+        {
+            try
+            {
+                var response = await _mediator.Send(new RenameFolderCommand { Id = request.Id ,Name = request.Name }, cancellationToken);
+                return Ok(response);
+            }
+            catch (Exception)
+            {
+                return NotFound();
+            }
+        }
     }
 }

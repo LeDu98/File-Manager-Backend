@@ -27,10 +27,12 @@ builder.Services.AddDbContext<ApplicationDbContext>(opt =>
     opt.UseNpgsql(builder.Configuration.GetConnectionString("WebApiDatabase")));
 
 builder.Services.AddMediatR(Application.AssemblyReference.Assembly);
-builder.Services.AddMediatR(typeof(GetFolderChildrenHandler).Assembly);
+builder.Services.AddMediatR(typeof(GetFolderChildrenQuery).Assembly);
 builder.Services.AddMediatR(typeof(GetFolderBreadcrumbQuery).Assembly);
 builder.Services.AddMediatR(typeof(DeleteItemsCommand).Assembly);
 builder.Services.AddMediatR(typeof(CreateFolderCommand).Assembly);
+builder.Services.AddMediatR(typeof(RenameFolderCommand).Assembly);
+builder.Services.AddMediatR(typeof(RenameFolderCommand).Assembly);
 
 // Add services to the container.
 
