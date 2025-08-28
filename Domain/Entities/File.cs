@@ -16,10 +16,10 @@ namespace Domain.Entities
         public string Name { get; set; }
         public string ContentType { get; set; }
         public long SizeInBytes { get; set; }
-        public byte[] Data { get; set; }
         public DateTimeOffset CreatedOn { get; set; }
         public DateTimeOffset ModifiedOn { get; set; }
 
         public Folder Folder { get; set; }
+        public FileContent Content { get; set; }
     }
 }

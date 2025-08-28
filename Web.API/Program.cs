@@ -8,6 +8,8 @@ using System.Reflection.Metadata;
 using Application.BusinessLogic.Queries.Folder;
 using Application.BusinessLogic.Commands;
 using Application.BusinessLogic.Commands.Folder;
+using Application.BusinessLogic.Queries.File;
+using Application.BusinessLogic.Commands.File;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -29,10 +31,12 @@ builder.Services.AddDbContext<ApplicationDbContext>(opt =>
 builder.Services.AddMediatR(Application.AssemblyReference.Assembly);
 builder.Services.AddMediatR(typeof(GetFolderChildrenQuery).Assembly);
 builder.Services.AddMediatR(typeof(GetFolderBreadcrumbQuery).Assembly);
+builder.Services.AddMediatR(typeof(GetFileContentQuery).Assembly);
 builder.Services.AddMediatR(typeof(DeleteItemsCommand).Assembly);
 builder.Services.AddMediatR(typeof(CreateFolderCommand).Assembly);
 builder.Services.AddMediatR(typeof(RenameFolderCommand).Assembly);
 builder.Services.AddMediatR(typeof(RenameFolderCommand).Assembly);
+builder.Services.AddMediatR(typeof(UploadFilesCommand).Assembly);
 
 // Add services to the container.
 
