@@ -25,6 +25,10 @@ namespace Application.BusinessLogic.Commands
             }
             if (request.FolderIds?.Any() == true)
             {
+
+                await _dbContext.Files
+                    .Where(f => f.FolderId.HasValue && request.FolderIds.Contains(f.FolderId.Value))
+                    .ExecuteDeleteAsync(cancellationToken);
                 await _dbContext.Folders.Where(_ => request.FolderIds.Contains(_.Id)).ExecuteDeleteAsync();
             }
             await tx.CommitAsync(cancellationToken);
